@@ -1,4 +1,20 @@
 <template>
+  <!-- 顶部导航 -->
+  <div class="wrapper">
+    <!-- 定位 -->
+    <div class="wrapper__position">
+      <span class="iconfont">&#xe8ba;</span>
+      江苏省南京市栖霞区羊山北路1号
+      <span class="iconfont position__notice">&#xe623;</span>
+    </div>
+
+    <!-- 搜索区域 -->
+    <div class="wrapper__search">
+      <span class="iconfont">&#xe632;</span>
+      <span class="search__test">山姆会员商店优惠商品</span>
+    </div>
+  </div>
+
   <!-- 底部导航 -->
   <div class="docker">
     <!-- BEM block__element--modifier -->
@@ -23,6 +39,46 @@
 
 <style lang="scss">
 @import "./style/index.scss";
+.wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0.5rem;
+  padding: 0 0.18rem;
+  &__position {
+    position: relative;
+    padding: 0.16rem 0.16rem 0.16rem 0;
+    font-size: 0.16rem;
+    @include ellipse;
+    .iconfont {
+      font-size: 0.2rem;
+    }
+    // background: green;
+    .position__notice {
+      position: absolute;
+      right: 0;
+    }
+    color: $content-fontcolor;
+  }
+  &__search {
+    margin-bottom: 0.12rem;
+    line-height: 0.32rem;
+    border-radius: 0.16rem;
+    background-color: $background-color;
+    color: $placeholder-color;
+    .iconfont {
+      display: inline-block;
+      padding: 0 0.12rem 0 0.16rem;
+      font-style: 0.2rem;
+    }
+    &__text {
+      // display: inline-block;
+      font-size: 0.14rem;
+    }
+  }
+}
+
 .docker {
   display: flex;
   position: absolute;
@@ -36,9 +92,6 @@
   &__item {
     flex: 1;
     text-align: center;
-    // font-size: 0.2rem;
-    // transform: scale(0.5, 0.5);
-    // transform-origin: center top;
     .iconfont {
       margin: 0.07rem 0 0.02rem 0;
       font-size: 0.18rem;
