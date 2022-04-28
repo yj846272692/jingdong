@@ -1,40 +1,47 @@
 <template>
   <div class="wrapper">
     <div class="search">
-      <div class="iconfont search__back" @click="handleBackClick">&#xe617;</div>
+      <div class="iconfont search__back" @click="handleBackClick">&#xe8ec;</div>
       <div class="search__content">
-        <span class="search__content__icon iconfont">&#xe60c;</span>
-        <input class="search__content__input" placeholder="请输入商品名称" />
+        <span class="search__content__icon iconfont">&#xe602;</span>
+        <input placeholder="请输入商品名称" class="search__content__input" />
       </div>
     </div>
     <ShopInfo :item="item" :hideBorder="true" v-show="item.imgUrl" />
+    <shopContent :shopId="item._id" />
+    <ShopCart />
   </div>
 </template>
+
 <script setup>
-import { reactive, toRefs } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { get } from '../../utils/request'
-import ShopInfo from '../../components/ShopInfo'
-const route = useRoute()
-const data = reactive({ item: {} })
+import { reactive, toRefs } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { get } from '../../utils/request';
+import ShopInfo from '../../components/ShopInfo';
+import ShopContent from '../../components/ShopContent';
+import ShopCart from './ShopCart';
 
-get(`/shop/${route.params.id}`).then((result) => {
-  if (result?.code === 200 && result?.data) {
-    console.log(result.data)
-    data.item = result.data
+const route = useRoute();
+const data = reactive({ item: {} });
+
+get(`/shop/${route.params.id}`).then((res) => {
+  console.log(res);
+  if (res?.code === 200 && res?.data) {
+    console.log(res.data);
+    data.item = res.data;
   }
-})
-const { item } = toRefs(data)
+});
+const { item } = toRefs(data);
 
-// 点击回退
-const router = useRouter()
+const router = useRouter();
 const handleBackClick = () => {
-  console.log('back')
-  router.back()
-}
+  console.log('back');
+  router.back();
+};
 </script>
+
 <style lang="scss" scoped>
-@import "../../style/virables.scss";
+@import '../../style/index.scss';
 .wrapper {
   padding: 0 0.18rem;
 }

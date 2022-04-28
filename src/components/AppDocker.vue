@@ -17,27 +17,27 @@
 </template>
 <script>
 export default {
-  name: "AppDocker",
-  props: ["currentIndex"],
+  name: 'AppDocker',
+  props: ['currentIndex'],
   setup() {
     const dockerList = [
       {
-        icon: "&#xe6b8;",
-        text: "首页",
+        icon: '&#xe751;',
+        text: '首页',
         to: {
-          name: "HomePage",
+          name: 'HomePage',
         },
       },
-      { icon: "&#xe698;", text: "购物车", to: { name: "CartPage" } },
-      { icon: "&#xe671;", text: "订单", to: { name: "OrderPage" } },
-      { icon: "&#xe78b;", text: "我的", to: { name: "PersonalPage" } },
+      { icon: '&#xe899;', text: '购物车', to: { name: 'CartPage' } },
+      { icon: '&#xe626;', text: '订单', to: { name: 'OrderPage' } },
+      { icon: '&#xe8bb;', text: '我的', to: { name: 'PersonalPage' } },
     ];
     return { dockerList };
   },
 };
 </script>
 <style lang="scss" scoped>
-@import "../style/virables.scss";
+@import '../style/virables.scss';
 .docker {
   display: flex;
   box-sizing: border-box;
